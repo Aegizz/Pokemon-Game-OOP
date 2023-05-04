@@ -16,8 +16,10 @@ class Pokemon{
         Pokemon(string name, string pokemonName, vector<vector<string>> database);
         string getName();
         string getpokemonName();
-        vector<int> getData();
+        vector<vector<string>> getData();
         int getRowPos(vector<vector<string>> database);
+        int getRow();
+        string findVariableData(string input);
                 
 
 };
