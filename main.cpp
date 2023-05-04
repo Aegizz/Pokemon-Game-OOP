@@ -7,12 +7,24 @@ using namespace std;
 extern vector<vector<string>> pokemonDatabase();
 int main(){
     vector<vector<string>> database = pokemonDatabase();
-    Pokemon Bulbasaur = Pokemon("Pokemon Label", "Bulbasaur", database);
+    string var = "";
     while (true){
-        string var;
-        cin >> var;
-        cout << Bulbasaur.findVariableData(var) << endl;
+        string name;
+        string poke;
+        cout << "What do you want to call the pokemon? ";
+        cin >> name;
+        cout << "\nWhich pokemon is this? ";
+        cin >> poke;
+        Pokemon Poke1 = Pokemon(name, poke, database);
+        while (var != "newPokemon"){
+            cout << "\nDetail? ";
+            cin >> var;
+            cout << Poke1.findVariableData(var) << endl;
+        }
+
     }
+
+
 
 
 }
