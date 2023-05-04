@@ -1,28 +1,36 @@
+#include <iostream>
 #include <fstream>
 #include <sstream>
-#include <string>
 #include <vector>
 
-using namespace std;
+int main()
+{
+    // Open the CSV file
+    std::ifstream file("FirstGenPokemon.csv");
 
-int main() {
-    ifstream file("FirstGenPokemon.csv");  // Open the CSV file
-    vector<vector<int>> data;   // Create a vector of vectors to store the data
-
-    string line;
-    while (getline(file, line)) {
-        vector<int> row;
-        stringstream ss(line);  // Create a stringstream from the line
-
-        string cell;
-        while (getline(ss, cell, ',')) {
-            row.push_back(stoi(cell));  // Convert the cell string to an integer and add it to the row vector
-        }
-
-        data.push_back(row);  // Add the row vector to the data vector
+    // Check if the file was opened successfully
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open file!" << std::endl;
+        return 1;
     }
 
-    file.close();  // Close the CSV file
+    // Create a vector to store the rows of the CSV file
+    std::vector<std::vector<std::string>> rows;
 
-    // Do something with the data vector...
+    // Read the file line by line and store each row as a vector of strings
+    std::string line;
+    while (std::getline(file, line)) {
+        std::vector<std::string> row;
+        std::stringstream ss(line);
+        std::string cell;
+        while (std::getline(ss, cell, ',')) {
+            row.push_back(cell);
+        }
+        rows.push_back(row);
+    }
+
+    // Print the value of cell A2 (second row, first column)
+    std::cout << "A2 = " << rows[1][0] << std::endl;
+
+    return 0;
 }
