@@ -9,21 +9,40 @@ using namespace std;
 vector<vector<string>> pokemonDatabase() {
     // Implementation of the function
     vector<vector<string>> database;
+    string pokeSlot1;
+    pokeSlot1 = "bulbasaur";
+    Pokemon Pokemon1 = Pokemon(pokeSlot1, database);
+    std::string hpString1 = Pokemon1.findVariableData("hp");
+    std::string attackString1 = Pokemon1.findVariableData("attack");
+    std::string defenseString1 = Pokemon1.findVariableData("defense");
 
-    // Populate the database with Pokemon data
-    vector<string> pokemon1 = {"Pikachu", "Electric", "55", "40"};
-    vector<string> pokemon2 = {"Charmander", "Fire", "39", "52"};
-    // Add more Pokemon data as needed
+    int pokemonHP = std::stoi(hpString1);
+    int pokemonAttack = std::stoi(attackString1);
+    int pokemonDefense = std::stoi(defenseString1);
 
-    database.push_back(pokemon1);
-    database.push_back(pokemon2);
-    // Add more Pokemon data to the database vector as needed
+    string pokeSlot2;
+    pokeSlot2 = "charmander";
+    Pokemon Pokemon2 = Pokemon(pokeSlot2, database);
+    std::string hpString2 = Pokemon1.findVariableData("hp");
+    std::string attackString2 = Pokemon1.findVariableData("attack");
+    std::string defenseString2 = Pokemon1.findVariableData("defense");
 
-    return database;
+    int pokemonHP = std::stoi(hpString2);
+    int pokemonAttack = std::stoi(attackString2);
+    int pokemonDefense = std::stoi(defenseString2);
+
+
+
+
+
+
+
+    
 }
 
 int main() {
     vector<vector<string>> database = pokemonDatabase();
+    
 
     // Rest of the main function
     // ...
