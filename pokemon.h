@@ -11,6 +11,7 @@ class Pokemon{
         int row;
         int health;
         vector<vector<string>> data;
+        int level;
     public:
         Pokemon();
         Pokemon(string name, string pokemonName, vector<vector<string>> database);
@@ -20,7 +21,8 @@ class Pokemon{
         int getRowPos(vector<vector<string>> database);
         int getRow();
         string findVariableData(string input);
-                
+        void setLevel(int level);
+        int getLevel();
 
 };
 #endif

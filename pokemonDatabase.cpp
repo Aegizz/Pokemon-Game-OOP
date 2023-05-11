@@ -21,8 +21,8 @@ vector<vector<string>> pokemonDatabase()
 
     // Read the file line by line and store each row as a vector of strings
     string line;
-    while (std::getline(file, line)) {
-        vector<std::string> row;
+    while (getline(file, line)) {
+        vector<string> row;
         stringstream ss(line);
         string cell;
         while (getline(ss, cell, ',')) {

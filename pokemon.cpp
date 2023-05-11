@@ -12,6 +12,7 @@ Pokemon::Pokemon(string _name, string _pokemonName, vector<vector<string>> _data
     name = _name;
     pokemonName = _pokemonName;
     data = _database;
+    level = 50;
     for (int i = 0; i < _database.size(); i++){
         for (int j = 0; j < _database[1].size(); j++){
             if (_database[i][j] == pokemonName){
@@ -54,3 +55,9 @@ string Pokemon::findVariableData(string input){
         }
     return "Error";
 }   
+int Pokemon::getLevel(){
+    return level;
+}
+void Pokemon::setLevel(int _level){
+    level = _level
+}
