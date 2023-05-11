@@ -2,14 +2,14 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iostream>
 using namespace std;
 
 Pokemon::Pokemon(){
 
 };
 
-Pokemon::Pokemon(string _name, string _pokemonName, vector<vector<string>> _database){
-    name = _name;
+Pokemon::Pokemon(string _pokemonName, vector<vector<string>> _database){
     pokemonName = _pokemonName;
     data = _database;
     level = 50;
@@ -20,11 +20,11 @@ Pokemon::Pokemon(string _name, string _pokemonName, vector<vector<string>> _data
             }
         }
     }
+    sprite = "pokemon/"+data[row][0]+".png";
+    cout << sprite;
 
 };
-string Pokemon::getName(){
-    return name;
-};
+
 string Pokemon::getpokemonName(){
     return pokemonName;
 };
@@ -59,5 +59,8 @@ int Pokemon::getLevel(){
     return level;
 }
 void Pokemon::setLevel(int _level){
-    level = _level
+    level = _level;
+}
+string Pokemon::getSprite(){
+    return sprite;
 }

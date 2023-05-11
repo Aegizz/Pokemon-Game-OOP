@@ -3,28 +3,17 @@
 #include <string>
 #include <algorithm>
 #include "pokemon.h"
+#include <SFML/Graphics.hpp>
+
 using namespace std;
-extern vector<vector<string>> pokemonDatabase();
+extern vector<vector<string>> pokemonDatabase(); 
+
 int main(){
     vector<vector<string>> database = pokemonDatabase();
-    string var = "";
-    while (true){
-        string name;
-        string poke;
-        cout << "What do you want to call the pokemon? ";
-        cin >> name;
-        cout << "\nWhich pokemon is this? ";
-        cin >> poke;
-        Pokemon Poke1 = Pokemon(name, poke, database);
-        while (var != "newPokemon"){
-            cout << "\nDetail? ";
-            cin >> var;
-            cout << Poke1.findVariableData(var) << endl;
-        }
+    string poke;
+    cout << "\nWhich pokemon is this? ";
+    cin >> poke;
+    Pokemon Poke1 = Pokemon(poke, database);
 
-    }
-
-
-
-
+    return 0;
 }
