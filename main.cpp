@@ -14,6 +14,8 @@ int main(){
     cout << "\nWhich pokemon is this? ";
     cin >> poke;
     Pokemon Poke1 = Pokemon(poke, database);
-
+    sf::SoundBuffer buffer;
+    if (!buffer.loadFromFile("sound.wav"))
+        return -1;
     return 0;
 }
