@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 using namespace std;
+extern std::vector<std::vector<std::string>> pokemonDatabase();
 
 class Pokemon{
     protected:
@@ -20,7 +21,7 @@ class Pokemon{
         int getRowPos(vector<vector<string>> database);
         int getRow();
         string findVariableData(string input);
-                
+        
 
 };
 #endif
