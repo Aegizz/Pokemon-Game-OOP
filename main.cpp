@@ -18,19 +18,6 @@ int map[mapHeight][mapWidth] = {
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
-bool canMove(float x, float y) {
-  int i = static_cast<int>(x) / tileSize;
-  int j = static_cast<int>(y) / tileSize;
-
-  // Check if the coordinates are within the map bounds
-  if (i < 0 || i >= mapWidth || j < 0 || j >= mapHeight) return false;
-
-  // Check if the tile is a wall
-  if (map[i][j] == 1) return false;
-
-  return true;
-}
-
 int main() {
   // creating window
   sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Map");
