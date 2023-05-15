@@ -20,7 +20,7 @@ Map::Map() {
   bridgeTexture.loadFromFile("bridge.png");
   bridgeRotatedTexture.loadFromFile("bridgeRotated.png");
 
-  sprite.setSize(sf::Vector2f(TILE_SIZE, TILE_SIZE));
+  sprite.setSize(sf::Vector2f(tileSize, tileSize));
   sprite.setTexture(&grassTexture);
 }
 
@@ -44,8 +44,8 @@ void Map::draw(sf::RenderWindow& window) {
         sprite.setTexture(&bridgeRotatedTexture);
       }
 
-      sprite.setPosition(static_cast<float>(j * TILE_SIZE),
-                         static_cast<float>(i * TILE_SIZE));
+      sprite.setPosition(static_cast<float>(j * tileSize),
+                         static_cast<float>(i * tileSize));
       window.draw(sprite);
     }
   }

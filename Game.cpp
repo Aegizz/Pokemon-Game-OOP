@@ -2,7 +2,7 @@
 
 Game::Game() {
   // Game window
-  window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pokemon Game");
+  window.create(sf::VideoMode(windowWidth, windowHeight), "Pokemon Game");
 }
 
 // running the game

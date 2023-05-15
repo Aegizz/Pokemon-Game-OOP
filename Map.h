@@ -4,9 +4,9 @@
 #ifndef MAP_H
 #define MAP_H
 
-const int WINDOW_WIDTH = 800;
-const int WINDOW_HEIGHT = 450;
-const int TILE_SIZE = 50;
+const int windowWidth = 800;
+const int windowHeight = 450;
+const int tileSize = 50;
 
 class Map {
  public:
