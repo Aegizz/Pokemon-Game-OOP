@@ -21,7 +21,6 @@ Pokemon::Pokemon(string _pokemonName, vector<vector<string>> _database){
         }
     }
     sprite = "pokemon/"+data[row][0]+".png";
-    cout << sprite;
 
 };
 
