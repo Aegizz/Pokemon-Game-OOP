@@ -50,9 +50,11 @@ int main(){
                         case sf::Keyboard::Down:
                             menu.moveDown();
                             break;
-                    }
+                        }
+                    break;
                 case sf::Event::Closed:
                     window.close();
+                    break;
             }
         }
 
