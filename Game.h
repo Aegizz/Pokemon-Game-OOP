@@ -2,6 +2,7 @@
 #define GAME_H
 #include "Map.h"
 #include "Player.h"
+#include "Pokemons.h"
 
 class Game {
  public:
@@ -12,6 +13,7 @@ class Game {
   sf::RenderWindow window;
   Map map;
   Player player;
+  Pokemons pokemons;
 
   // game events
   void handleEvents() {
@@ -66,6 +68,7 @@ class Game {
   void render() {
     window.clear();
     map.draw(window);
+    pokemons.draw(window);
     player.draw(window);
     window.display();
   }
