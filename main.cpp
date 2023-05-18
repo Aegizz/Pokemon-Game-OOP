@@ -5,49 +5,66 @@
 #include "pokemon.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-
+#include "Menu.h"
+#include <unistd.h>
 using namespace std;
 extern vector<vector<string>> pokemonDatabase(); 
 
 int main(){
     vector<vector<string>> database = pokemonDatabase();
-    string poke;
-    cout << "\nWhich pokemon is this? ";
-    cin >> poke;
-    Pokemon Poke1 = Pokemon(poke, database);
+    bool drawMenu = false;
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
     sf::Music music;
+
+
     if (!music.openFromFile("pokemon_title_screen.ogg")){
         return -1; // error
     }
     music.play();
 
+    Menu menu(window.getSize().x, window.getSize().y);
     // run the program as long as the window is open
+    sf::Clock clock;
+
     while (window.isOpen())
     {
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::M)){
+            if ((int)((clock.getElapsedTime()).asSeconds()) << 1){
+                drawMenu ^= true;
+                clock.restart();
+            }
+        }
+ 
+
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
+        {   
+            switch (event.type){
+                case sf::Event::KeyReleased:
+                    switch (event.key.code){
+                        case sf::Keyboard::Up:
+                            menu.moveUp();
+                            break;
+                        case sf::Keyboard::Down:
+                            menu.moveDown();
+                            break;
+                    }
+                case sf::Event::Closed:
+                    window.close();
+            }
         }
-        sf::Texture texture;
-        if (!texture.loadFromFile(Poke1.getSprite()))
-        {
-            return -1;
-        }
-        sf::Sprite sprite;
-        sprite.setTexture(texture);
 
         // clear the window with black color
-        window.clear(sf::Color::Black);
+        window.clear(sf::Color::White);
 
         // draw everything here...
         // window.draw(...);
-        window.draw(sprite);
+        if (drawMenu){
 
+            menu.draw(window);
+        }
         // end the current frame
         window.display();
     }

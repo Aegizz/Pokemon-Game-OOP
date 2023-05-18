@@ -1,0 +1,34 @@
+Date : 2023-05-18 13:05:49
+Directory : /home/lloyd/Desktop/OOP-Major-Game
+Total : 9 files,  229 codes, 12 comments, 42 blanks, all 283 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C++      |          8 |        224 |         12 |         42 |        278 |
+| Makefile |          1 |          5 |          0 |          0 |          5 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                      |          9 |        229 |         12 |         42 |        283 |
++--------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                               | language | code       | comment    | blank      | total      |
++--------------------------------------------------------+----------+------------+------------+------------+------------+
+| /home/lloyd/Desktop/OOP-Major-Game/Menu.cpp            | C++      |         21 |          1 |          6 |         28 |
+| /home/lloyd/Desktop/OOP-Major-Game/Menu.h              | C++      |         17 |          0 |          6 |         23 |
+| /home/lloyd/Desktop/OOP-Major-Game/main.cpp            | C++      |         49 |          7 |         11 |         67 |
+| /home/lloyd/Desktop/OOP-Major-Game/makefile            | Makefile |          5 |          0 |          0 |          5 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemon.cpp         | C++      |         57 |          0 |          8 |         65 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemon.h           | C++      |         26 |          0 |          1 |         27 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemonDatabase.cpp | C++      |         27 |          4 |          4 |         35 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemonFamily.cpp   | C++      |         12 |          0 |          2 |         14 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemonFamily.h     | C++      |         15 |          0 |          4 |         19 |
+| Total                                                  |          |        229 |         12 |         42 |        283 |
++--------------------------------------------------------+----------+------------+------------+------------+------------+
