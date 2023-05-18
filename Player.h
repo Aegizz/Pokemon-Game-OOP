@@ -1,8 +1,9 @@
-#include <SFML/Graphics.hpp>
-
-#include "Map.h"
 #ifndef PLAYER_H
 #define PLAYER_H
+#include <SFML/Graphics.hpp>
+
+#include "Game.h"
+#include "Map.h"
 
 class Player {
  public:
@@ -12,8 +13,12 @@ class Player {
   void animationHorizontal(double y);
   void animationVertical(double y);
   void draw(sf::RenderWindow& window);
+  double getX();
+  double getY();
 
  private:
+  int x_;
+  int y_;
   sf::Texture player;
   sf::Sprite playerSprite;
 };

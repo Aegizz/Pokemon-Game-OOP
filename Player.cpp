@@ -5,6 +5,8 @@ Player::Player() {
   playerSprite.setTexture(player);
   playerSprite.setTextureRect(sf::IntRect(0, 0, 85.5, 118));
   playerSprite.setScale(0.5f, 0.5f);
+  x_ = 0;
+  y_ = 0;
 }
 
 // moving player around the map
@@ -32,3 +34,7 @@ void Player::animationVertical(double y) {
 
 // drawing player on the map
 void Player::draw(sf::RenderWindow& window) { window.draw(playerSprite); }
+
+double Player::getX() { return playerSprite.getPosition().x; }
+
+double Player::getY() { return playerSprite.getPosition().y; }
