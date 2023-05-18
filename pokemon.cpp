@@ -8,8 +8,7 @@ Pokemon::Pokemon(){
 
 };
 
-Pokemon::Pokemon(string _name, string _pokemonName, vector<vector<string>> _database){
-    name = _name;
+Pokemon::Pokemon(string _pokemonName, vector<vector<string>> _database){
     pokemonName = _pokemonName;
     data = _database;
     for (int i = 0; i < _database.size(); i++){
@@ -20,9 +19,6 @@ Pokemon::Pokemon(string _name, string _pokemonName, vector<vector<string>> _data
         }
     }
 
-};
-string Pokemon::getName(){
-    return name;
 };
 string Pokemon::getpokemonName(){
     return pokemonName;
