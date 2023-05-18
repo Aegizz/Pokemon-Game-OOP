@@ -27,14 +27,14 @@ void Menu::draw(sf::RenderWindow &window){
         window.draw(menuItems[i]);
     }
 }
-void Menu::moveDown(){
+void Menu::moveUp(){
     if  (selectedItemIndex +1 < NUMBER_OF_MENU_ITEMS){
             menuItems[selectedItemIndex].setColor(sf::Color::Black);
             selectedItemIndex++;
             menuItems[selectedItemIndex].setColor(sf::Color::Yellow);
     }
 }
-void Menu::moveUp(){
+void Menu::moveDown(){
     if (selectedItemIndex -1 >= 0){
         menuItems[selectedItemIndex].setColor(sf::Color::Black);
         selectedItemIndex--;
