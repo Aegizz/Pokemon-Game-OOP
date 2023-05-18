@@ -22,7 +22,7 @@ int main(){
     }
     music.play();
 
-    Menu menu(window.getSize().x, window.getSize().y);
+    Menu menu(404, 125);
     // run the program as long as the window is open
     sf::Clock clock;
 
@@ -64,7 +64,7 @@ int main(){
         // draw everything here...
         // window.draw(...);
         if (drawMenu){
-
+            menu.setPosition(0, 450);
             menu.draw(window);
         }
         // end the current frame

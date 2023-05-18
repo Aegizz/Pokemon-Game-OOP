@@ -1,0 +1,36 @@
+Date : 2023-05-18 15:38:28
+Directory : /home/lloyd/Desktop/OOP-Major-Game
+Total : 11 files,  273 codes, 11 comments, 52 blanks, all 336 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C++      |         10 |        268 |         11 |         52 |        331 |
+| Makefile |          1 |          5 |          0 |          0 |          5 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                      |         11 |        273 |         11 |         52 |        336 |
++--------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                               | language | code       | comment    | blank      | total      |
++--------------------------------------------------------+----------+------------+------------+------------+------------+
+| /home/lloyd/Desktop/OOP-Major-Game/Menu.cpp            | C++      |         36 |          1 |          6 |         43 |
+| /home/lloyd/Desktop/OOP-Major-Game/Menu.h              | C++      |         17 |          0 |          6 |         23 |
+| /home/lloyd/Desktop/OOP-Major-Game/Pokedex.cpp         | C++      |          9 |          0 |          5 |         14 |
+| /home/lloyd/Desktop/OOP-Major-Game/Pokedex.h           | C++      |         12 |          0 |          2 |         14 |
+| /home/lloyd/Desktop/OOP-Major-Game/main.cpp            | C++      |         57 |          6 |         14 |         77 |
+| /home/lloyd/Desktop/OOP-Major-Game/makefile            | Makefile |          5 |          0 |          0 |          5 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemon.cpp         | C++      |         57 |          0 |          8 |         65 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemon.h           | C++      |         26 |          0 |          1 |         27 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemonDatabase.cpp | C++      |         27 |          4 |          4 |         35 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemonFamily.cpp   | C++      |         12 |          0 |          2 |         14 |
+| /home/lloyd/Desktop/OOP-Major-Game/pokemonFamily.h     | C++      |         15 |          0 |          4 |         19 |
+| Total                                                  |          |        273 |         11 |         52 |        336 |
++--------------------------------------------------------+----------+------------+------------+------------+------------+
