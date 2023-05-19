@@ -58,7 +58,7 @@ int main(){
             }
         }
 
-        // clear the window with black color
+        // clear the window with white color
         window.clear(sf::Color::White);
 
         // draw everything here...

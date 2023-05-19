@@ -6,10 +6,12 @@ using namespace std;
 
 class Pokedex:public Menu{
     private:
-        vector<vector<string>> data;
+        vector<string> data;
+        int width;
+        int height;
     public:
         Pokedex::Pokedex();
-        Pokedex::Pokedex(vector<vector<string>> data);
+        Pokedex::Pokedex(vector<string> data, int width, int height);
         
 
 }
