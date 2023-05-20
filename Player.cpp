@@ -38,3 +38,5 @@ void Player::draw(sf::RenderWindow& window) { window.draw(playerSprite); }
 double Player::getX() { return playerSprite.getPosition().x; }
 
 double Player::getY() { return playerSprite.getPosition().y; }
+
+sf::Sprite Player::getPlayerSprite() { return playerSprite; }

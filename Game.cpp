@@ -63,9 +63,32 @@ void Game::keyPress(sf::Keyboard::Key key) {
 
 // render
 void Game::render() {
+  checkInteraction();
   window.clear();
   map.draw(window);
   pokemons.draw(window);
   player.draw(window);
   window.display();
+}
+
+void Game::checkInteraction() {
+  sf::Sprite playerSprite = player.getPlayerSprite();
+
+  sf::Sprite pokemonSprite1 = pokemons.getSprite1();
+  if (playerSprite.getGlobalBounds().intersects(
+          pokemonSprite1.getGlobalBounds())) {
+    std::cout << "pokemon 1 found" << std::endl;  // change this to battle
+  }
+
+  sf::Sprite pokemonSprite2 = pokemons.getSprite2();
+  if (playerSprite.getGlobalBounds().intersects(
+          pokemonSprite2.getGlobalBounds())) {
+    std::cout << "pokemon 2 found" << std::endl;  // change this to battle
+  }
+
+  sf::Sprite pokemonSprite3 = pokemons.getSprite3();
+  if (playerSprite.getGlobalBounds().intersects(
+          pokemonSprite3.getGlobalBounds())) {
+    std::cout << "pokemon 3 found" << std::endl;  // change this to battle
+  }
 }

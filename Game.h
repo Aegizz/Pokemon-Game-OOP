@@ -1,5 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
+#include <iostream>
+
 #include "Map.h"
 #include "Player.h"
 #include "Pokemons.h"
@@ -22,6 +24,7 @@ class Game {
   void keyPress(sf::Keyboard::Key key);
   // render
   void render();
+  void checkInteraction();
 };
 
 #endif

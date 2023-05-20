@@ -15,6 +15,7 @@ class Player {
   void draw(sf::RenderWindow& window);
   double getX();
   double getY();
+  sf::Sprite getPlayerSprite();
 
  private:
   int x_;

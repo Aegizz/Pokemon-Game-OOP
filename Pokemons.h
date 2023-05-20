@@ -12,6 +12,9 @@ class Pokemons {
   sf::Sprite spawnPokemon2();
   sf::Sprite spawnPokemon3();
   void draw(sf::RenderWindow& window);
+  sf::Sprite getSprite1();
+  sf::Sprite getSprite2();
+  sf::Sprite getSprite3();
 
  private:
   std::vector<sf::Texture> sprites;

@@ -45,3 +45,7 @@ void Pokemons::draw(sf::RenderWindow& window) {
   window.draw(sprite2);
   window.draw(sprite3);
 }
+
+sf::Sprite Pokemons::getSprite1() { return sprite1; }
+sf::Sprite Pokemons::getSprite2() { return sprite2; }
+sf::Sprite Pokemons::getSprite3() { return sprite3; }
