@@ -3,7 +3,7 @@
 #include "Game.cpp"
 #include "Map.cpp"
 #include "Player.cpp"
-#include "Pokemons.h"
+#include "Pokemons.cpp"
 
 int main() {
   Game game;
