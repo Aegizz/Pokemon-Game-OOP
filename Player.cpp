@@ -3,31 +3,33 @@
 #include <vector>
 #include <string>
 #include <iostream>
-using namespace std;
-extern vector<vector<string>> pokemonDatabase();
-    
-int main() {
-    vector<vector<string>> database = pokemonDatabase();
-    Player player;
+extern std::vector<std::vector<std::string>> pokemonDatabase();
 
-    // Create and add Pokemon objects to the player's team
-    Pokemon bulbasaur("bulbasaur", database);
-    player.addPokemonToTeam(bulbasaur);
 
-    Pokemon charmander("charmander", database);
-    player.addPokemonToTeam(charmander);
-
-    Pokemon squirtle("squirtle", database);
-    player.addPokemonToTeam(squirtle);
-
-    Pokemon pikachu("pikachu", database);
-    player.addPokemonToTeam(pikachu);
-
-    Pokemon jigglypuff("jigglypuff", database);
-    player.addPokemonToTeam(jigglypuff);
-
-    // Display the player's team
-    player.displayTeam();
-
-    return 0;
+Player::Player() {
+    // Constructor implementation
 }
+
+bool Player::addPokemon(const Pokemon& pokemon) {
+    if (pokemonTeam.size() < 6) {
+        pokemonTeam.push_back(pokemon);
+        return true;
+    }
+    return false; // Unable to add Pokemon if the team is already full
+}
+
+bool Player::removePokemon(const std::string& pokemonName) {
+    for (auto it = pokemonTeam.begin(); it != pokemonTeam.end(); ++it) {
+        if (it->getpokemonName() == pokemonName) {
+            pokemonTeam.erase(it);
+            return true;
+        }
+    }
+    return false; // Unable to find and remove the specified Pokemon
+}
+
+std::vector<Pokemon> Player::getPokemonTeam() {
+    return pokemonTeam;
+}
+
+    

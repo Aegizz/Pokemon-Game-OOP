@@ -1,26 +1,35 @@
 #ifndef POKEMON_H
 #define POKEMON_H
-
 #include <string>
 #include <vector>
+using namespace std;
 
-extern std::vector<std::vector<std::string>> pokemonDatabase();
-
-class Pokemon {
-private:
-    std::string pokemonName;
-    int row;
-    int health;
-    std::vector<std::vector<std::string>> data;
-
-public:
-    Pokemon();
-    Pokemon(std::string pokemonName, std::vector<std::vector<std::string>> database);
-    std::string getpokemonName();
-    std::vector<std::vector<std::string>> getData();
-    int getRowPos(std::vector<std::vector<std::string>> database);
-    int getRow();
-    std::string findVariableData(std::string input);
+class Pokemon{
+    protected:
+        string pokemonName;
+        int row;
+        int health;
+        string type;
+        vector<vector<string>> data;
+        int level;
+        string sprite;
+        vector<string> attacks;
+    public:
+        Pokemon();
+        Pokemon(string pokemonName, vector<vector<string>> database);
+        string getpokemonName();
+        vector<vector<string>> getData();
+        int getRowPos(vector<vector<string>> database);
+        int getRow();
+        string findVariableData(string input);
+        void setLevel(int level);
+        int getLevel();
+        string getSprite();
+        int getHealth();
+        void setHealth();
+        void setAttacks(const vector<string>& attackList);
+        vector<Attack> getAttacks();
+        string getType();
+        void setType();
 };
-
 #endif
