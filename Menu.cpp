@@ -17,12 +17,12 @@ Menu::Menu(float _width, float _height){
     menuItems[0].setFont(font);
     menuItems[0].setFillColor(sf::Color::Black);
     menuItems[0].setString("Pokedex");
-    menuItems[0].setPosition(sf::Vector2f(width/2, height/(NUMBER_OF_MENU_ITEMS)));
+    menuItems[0].setPosition(sf::Vector2f(width, height/(NUMBER_OF_MENU_ITEMS)));
 
     menuItems[1].setFont(font);
     menuItems[1].setFillColor(sf::Color::Yellow);
     menuItems[1].setString("Map");
-    menuItems[1].setPosition(sf::Vector2f(width/2, height/(NUMBER_OF_MENU_ITEMS*2)));
+    menuItems[1].setPosition(sf::Vector2f(width, height/(NUMBER_OF_MENU_ITEMS*2)));
 
     selectedItemIndex = 1;
 }
@@ -62,4 +62,7 @@ vector<int> Menu::getPosition(){
     positions.insert(positions.begin(), width);
     positions.insert(positions.end(), height);
     return positions;
+}
+int Menu::getItemIndex(){
+    return selectedItemIndex;
 }

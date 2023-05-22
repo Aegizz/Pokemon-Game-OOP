@@ -22,6 +22,7 @@ class Menu{
         void moveDown();
         void setPosition(int width, int height);
         vector<int> getPosition();
+        int getItemIndex();
 
 };
 
