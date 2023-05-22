@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 
+#include "Battle.cpp"
 #include "Game.cpp"
 #include "Map.cpp"
 #include "Player.cpp"
