@@ -18,7 +18,7 @@ int main(){
     bool drawPokedex = false;
     bool drawPokedexEntry = false;
     int pagePokedex = 1;
-    int pagePokedexEntry = 1;
+    int pagePokedexEntry = 0;
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
     sf::Music music;
 
@@ -29,7 +29,7 @@ int main(){
 
     Menu menu(404, 250);
     Pokedex Pokedex(database,0,450);
-    PokedexPokemon pokedexEntry(database, 0, 450, 1);
+    PokedexPokemon pokedexEntry(database, 0, 450, 2);
 
 
     // run the program as long as the window is open
@@ -52,7 +52,8 @@ int main(){
             if ((int)((clock.getElapsedTime()).asSeconds()) > 1){
                 drawPokedex ^= true;
                 drawPokedexEntry ^= true;
-                PokedexPokemon pokedexEntry(database, 0, 450, Pokedex.getItemIndex());
+                pokedexEntry.Entry(Pokedex.getItemIndex());
+                Pokedex.setItemIndex(1);
             }
         }
  
@@ -78,12 +79,18 @@ int main(){
                                 Pokedex.PositionChange();
                                 pagePokedex--;
                             }
+                            if ((pagePokedexEntry -1 > 0) && drawPokedexEntry){
+                                pagePokedexEntry = pagePokedexEntry -2;
+                            }
                             break;
                         case sf::Keyboard::Down:
                             menu.moveDown();
                             if ((pagePokedex + 1 < (151)) && drawPokedex){
                                 Pokedex.PositionChange();
                                 pagePokedex++;
+                            }
+                            if ((pagePokedexEntry + 1 < 68) && drawPokedexEntry){
+                                pagePokedexEntry = pagePokedexEntry+2;
                             }
                             break;
                         }

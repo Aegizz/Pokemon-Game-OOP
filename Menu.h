@@ -23,6 +23,7 @@ class Menu{
         void setPosition(int width, int height);
         vector<int> getPosition();
         int getItemIndex();
+        void setItemIndex(int index);
 
 };
 
