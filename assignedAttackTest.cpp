@@ -4,10 +4,9 @@
 extern vector<vector<string>> pokemonDatabase();
 int main() {
     
-    std::vector<std::vector<std::string>> pikachuDatabase = {
-        { "Pikachu", "Electric" }
-    };
-    assignedAttack pikachu("Pikachu", pikachuDatabase);
+    vector<vector<string>> database = pokemonDatabase();
+
+    assignedAttack pikachu("Pikachu", database);
 
     // Retrieve and display the moves of Pikachu
     std::vector<Attack> moves = pikachu.getMoves();
