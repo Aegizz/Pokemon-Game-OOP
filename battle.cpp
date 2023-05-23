@@ -1,13 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cstdlib>
-#include <ctime>
-#include <fstream>
-#include <sstream>
-#include "pokemon.h"
-#include "Player.h"
+#include "pokemon.h"  // Include pokemon.h before attack.h
 #include "attack.h"
+#include "Player.h"
 
 extern vector<vector<string>> pokemonDatabase();
 

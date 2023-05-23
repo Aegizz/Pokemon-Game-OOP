@@ -9,11 +9,9 @@ class Pokemon{
         string pokemonName;
         int row;
         int health;
-        string type;
         vector<vector<string>> data;
         int level;
-        string sprite;
-        vector<string> attacks;
+        string type;
     public:
         Pokemon();
         Pokemon(string pokemonName, vector<vector<string>> database);
@@ -22,14 +20,12 @@ class Pokemon{
         int getRowPos(vector<vector<string>> database);
         int getRow();
         string findVariableData(string input);
+        void setHealth(int _health);
+        int getHealth();
         void setLevel(int level);
         int getLevel();
-        string getSprite();
-        int getHealth();
-        void setHealth();
-        void setAttacks(const vector<string>& attackList);
-        vector<Attack> getAttacks();
         string getType();
-        void setType();
+        void setType(string _type);
+
 };
 #endif

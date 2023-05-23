@@ -14,4 +14,4 @@ public:
     bool removePokemon(const std::string& pokemonName);
     std::vector<Pokemon> getPokemonTeam();
 };
-#endif;
+#endif // PLAYER_H
