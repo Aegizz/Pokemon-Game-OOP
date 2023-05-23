@@ -79,7 +79,7 @@ int main(){
                                 Pokedex.PositionChange();
                                 pagePokedex--;
                             }
-                            if ((pagePokedexEntry -1 > 0) && drawPokedexEntry){
+                            if ((pagePokedexEntry -2 > 0) && drawPokedexEntry){
                                 pagePokedexEntry = pagePokedexEntry -2;
                             }
                             break;
@@ -93,10 +93,14 @@ int main(){
                                 pagePokedexEntry = pagePokedexEntry+2;
                             }
                             break;
+                        default:
+                            break;
                         }
                     break;
                 case sf::Event::Closed:
                     window.close();
+                    break;
+                default:
                     break;
             }
         }

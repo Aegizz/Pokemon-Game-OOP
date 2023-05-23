@@ -57,6 +57,7 @@ void Pokedex::draw(sf::RenderWindow &window, int page){
     window.draw(menuBox);
     for (int i = page; i < page + 2; i=i+2){
         pokedexEntries[i].setFillColor(sf::Color::Yellow);
+        selectedItemIndex = i - 1;
         window.draw(pokedexEntries[i]);
         window.draw(pokedexEntries[i+1]);
     }
