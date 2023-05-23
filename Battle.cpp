@@ -1,8 +1,9 @@
 #include "Battle.h"
 
-Battle::Battle(sf::Sprite pokemoneSprite) {
-  pokemonSprite_ = pokemoneSprite;
+Battle::Battle(sf::Sprite pokemonSprite) {
+  pokemonSprite_ = pokemonSprite;
   window.create(sf::VideoMode(windowWidth, windowHeight), "Battle");
+  pokemonSprite_.setPosition(windowWidth / 2, windowHeight / 2);
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -11,9 +12,7 @@ Battle::Battle(sf::Sprite pokemoneSprite) {
       }
     }
     window.clear(sf::Color::White);
-    // pokemonSprite_.draw(window);
+    window.draw(pokemonSprite_);
     window.display();
   }
 }
-
-// void Battle::draw(sf::RenderWindow& window) { window.draw(pokemonSprite_); }

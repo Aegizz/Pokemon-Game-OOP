@@ -75,27 +75,20 @@ void Game::checkInteraction() {
   sf::Sprite playerSprite = player.getPlayerSprite();
 
   sf::Sprite pokemonSprite1 = pokemons.getSprite1();
-
   if (playerSprite.getGlobalBounds().intersects(
           pokemonSprite1.getGlobalBounds())) {
     Battle battle1(pokemonSprite1);
   }
 
-  // sf::Sprite pokemonSprite2 = pokemons.getSprite2();
+  sf::Sprite pokemonSprite2 = pokemons.getSprite2();
+  if (playerSprite.getGlobalBounds().intersects(
+          pokemonSprite2.getGlobalBounds())) {
+    Battle battle2(pokemonSprite2);
+  }
 
-  // Battle battle2(pokemonSprite2);
-  // if (playerSprite.getGlobalBounds().intersects(
-  //         pokemonSprite2.getGlobalBounds())) {
-  //   std::cout << "p2f" << std::endl;
-  //   battle2.startBattle();
-  // }
-
-  // sf::Sprite pokemonSprite3 = pokemons.getSprite3();
-
-  // Battle battle3(pokemonSprite3);
-  // if (playerSprite.getGlobalBounds().intersects(
-  //         pokemonSprite3.getGlobalBounds())) {
-  //   std::cout << "p3f" << std::endl;
-  //   battle3.startBattle();
-  // }
+  sf::Sprite pokemonSprite3 = pokemons.getSprite3();
+  if (playerSprite.getGlobalBounds().intersects(
+          pokemonSprite3.getGlobalBounds())) {
+    Battle battle3(pokemonSprite3);
+  }
 }
