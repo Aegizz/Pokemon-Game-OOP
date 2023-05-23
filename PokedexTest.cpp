@@ -100,7 +100,7 @@ int main(){
             cout << "Current Pos" <<Pokedex.getPosition()[1];
             Pokedex.setPosition(0,450);
             cout << "Current Pos = "<< Pokedex.getPosition()[0];
-            cout << "Current Pos" <<Pokedex.getPosition()[1];
+            cout << "Current Pos = " <<Pokedex.getPosition()[1];
             Pokedex.draw(window, pagePokedex);
 
         }

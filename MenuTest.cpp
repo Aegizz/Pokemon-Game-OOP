@@ -53,7 +53,7 @@ int main(){
         window.clear(sf::Color::White);
         if (drawMenu){
             cout << "Current Pos = "<< menu.getPosition()[0];
-            cout << "Current Pos" <<menu.getPosition()[1];
+            cout << "Current Pos = " <<menu.getPosition()[1];
 
             menu.setPosition(0, 450);
             cout <<"Current Pos = " << menu.getPosition()[0];

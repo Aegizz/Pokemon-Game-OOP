@@ -63,7 +63,10 @@ void Pokedex::draw(sf::RenderWindow &window, int page){
     }
 }
 
-void Pokedex::setPosition(int width, int height){
+void Pokedex::setPosition(int _width, int _height){
+    width = _width;
+    height = _height;
+
     menuBox.setPosition(width, height);
     for (int i = 1; i < 151; i = i+2){
         pokedexEntries[i].setString(data[i]);

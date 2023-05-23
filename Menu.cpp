@@ -14,7 +14,7 @@ Menu::Menu(float _width, float _height){
     }
     width = _width;
     height = _height;
-    menuBox.setScale(sf::Vector2f(2.0f, 1.0f));
+    menuBox.setScale(sf::Vector2f(1.0f, 1.0f));
     menuItems[0].setFont(font);
     menuItems[0].setFillColor(sf::Color::Yellow);
     menuItems[0].setString("Pokedex");
