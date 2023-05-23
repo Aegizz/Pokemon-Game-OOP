@@ -3,7 +3,7 @@
 Battle::Battle(sf::Sprite pokemonSprite) {
   pokemonSprite_ = pokemonSprite;
   window.create(sf::VideoMode(windowWidth, windowHeight), "Battle");
-  pokemonSprite_.setPosition(windowWidth / 2, windowHeight / 2);
+  pokemonSprite_.setPosition((windowWidth / 2) + 200, (windowHeight / 2) - 200);
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
