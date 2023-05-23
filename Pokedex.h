@@ -16,6 +16,8 @@ class Pokedex : public Menu{
         Pokedex(vector<vector<string>> data, int width, int height);
         void draw(sf::RenderWindow &window, int page);
         void PositionChange();
+        void setPosition(int width, int height);
+
 
 
 };

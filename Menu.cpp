@@ -7,6 +7,7 @@ Menu::Menu(){
 Menu::Menu(float _width, float _height){
     menuBoxTex.loadFromFile("pokemon/text.png");
     menuBox.setTexture(menuBoxTex);
+    arraySize = 2;
     if (!font.loadFromFile("PKMN RBYGSC.ttf"))
     {
         //handle error
@@ -17,26 +18,25 @@ Menu::Menu(float _width, float _height){
     menuItems[0].setFont(font);
     menuItems[0].setFillColor(sf::Color::Yellow);
     menuItems[0].setString("Pokedex");
-    menuItems[0].setPosition(sf::Vector2f(width, height/(NUMBER_OF_MENU_ITEMS)));
+    menuItems[0].setPosition(sf::Vector2f(width, height/(arraySize)));
 
     menuItems[1].setFont(font);
     menuItems[1].setFillColor(sf::Color::Black);
     menuItems[1].setString("Map");
-    menuItems[1].setPosition(sf::Vector2f(width, height/(NUMBER_OF_MENU_ITEMS*2)));
+    menuItems[1].setPosition(sf::Vector2f(width, height/(arraySize*2)));
 
     selectedItemIndex = 0;
 }
 
 void Menu::draw(sf::RenderWindow &window){
-
     window.draw(menuBox);
 
-    for (int i =0; i < NUMBER_OF_MENU_ITEMS; i++){
+    for (int i =0; i < arraySize; i++){
         window.draw(menuItems[i]);
     }
 }
 void Menu::moveDown(){
-    if  (selectedItemIndex +1 < NUMBER_OF_MENU_ITEMS){
+    if  (selectedItemIndex +1 < arraySize){
             menuItems[selectedItemIndex].setFillColor(sf::Color::Black);
             selectedItemIndex++;
             menuItems[selectedItemIndex].setFillColor(sf::Color::Yellow);
@@ -53,7 +53,7 @@ void Menu::setPosition(int _width, int _height){
     width = _width;
     height = _height;
     menuBox.setPosition(sf::Vector2f((float)_width, (float)_height));
-    for (int i = 0; i < NUMBER_OF_MENU_ITEMS; i++){
+    for (int i = 0; i < arraySize; i++){
         menuItems[i].setPosition(sf::Vector2f((float)_width +50.0f, (float)_height+(30.0f)*(i+1)));
     }
 }

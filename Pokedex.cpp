@@ -63,3 +63,19 @@ void Pokedex::draw(sf::RenderWindow &window, int page){
     }
 }
 
+void Pokedex::setPosition(int width, int height){
+    menuBox.setPosition(width, height);
+    for (int i = 1; i < 151; i = i+2){
+        pokedexEntries[i].setString(data[i]);
+        pokedexEntries[i].setFillColor(sf::Color::Black);
+        pokedexEntries[i].setFont(font);
+        pokedexEntries[i].setPosition(sf::Vector2f(width+ 15.0f, height+(30.0f  + (30.0f * stagger))));
+
+        pokedexEntries[i+1].setString(data[i+1]);
+        pokedexEntries[i+1].setFillColor(sf::Color::Black);
+        pokedexEntries[i+1].setFont(font);
+        pokedexEntries[i+1].setPosition(sf::Vector2f(width+ 15.0f, height+60.0f - (30.0f * stagger)));
+        selectedItemIndex=i;
+
+    }
+};

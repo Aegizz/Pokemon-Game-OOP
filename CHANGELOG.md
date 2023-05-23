@@ -11,4 +11,5 @@ Since there is already 3 levels of inheritance and the items were beginning to b
 ## Enviroment/Aesthetics
 A change was made from the original plan of hosting battles and engaing with opponents, it was turned into a simulation against various randomly spawning pokemon around the map, this is to better manage the time and resources provided to us.
 
-## 
+## Added Music
+A simple pokemon song from the original game will play on repeat as you play the game.

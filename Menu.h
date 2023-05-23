@@ -3,16 +3,17 @@
 #include "SFML/Graphics.hpp"
 using namespace std;
 
-#define NUMBER_OF_MENU_ITEMS 2
 class Menu{
     protected:
         int selectedItemIndex;
         sf::Font font;
-        sf::Text menuItems[NUMBER_OF_MENU_ITEMS];
+        int arraySize;
+        sf::Text menuItems[2];
         int width;
         int height;
         sf::Sprite menuBox;
         sf::Texture menuBoxTex;
+
     public:
         Menu(float width, float height);
         Menu();
