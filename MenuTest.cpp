@@ -11,7 +11,7 @@ int main(){
     bool drawMenu = false; // Flag to determine whether to draw the menu
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Menu Test"); // Create the window
-    
+
     Menu menu(0,0); // Create an instance of the Menu class
     sf::Clock clock; // Clock for timing
 
@@ -78,7 +78,7 @@ int main(){
 
             menu.draw(window);
         }
-
+        //Display the window
         window.display();
     }
 
