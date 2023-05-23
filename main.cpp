@@ -52,7 +52,7 @@ int main(){
             if ((int)((clock.getElapsedTime()).asSeconds()) > 1){
                 drawPokedex ^= true;
                 drawPokedexEntry ^= true;
-                pokedexEntry.Entry(Pokedex.getItemIndex());
+                pokedexEntry.entry(Pokedex.getItemIndex());
                 Pokedex.setItemIndex(1);
             }
         }

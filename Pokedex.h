@@ -1,6 +1,7 @@
 #include "Menu.h"
 #ifndef POKEDEX_H
 #define POKEDEX_H
+
 #include <vector>
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -8,17 +9,17 @@ using namespace std;
 
 class Pokedex : public Menu{
     protected:
-        vector<string> data;
-        sf::Text pokedexEntries[152];
-        bool stagger;
+        vector<string> data; // Vector to store the Pokedex data
+        sf::Text pokedexEntries[152]; // Array of Text objects to display Pokedex entries
+        bool stagger; // Flag to determine the staggered display of Pokedex entries when moving through the array
+
     public:
-        Pokedex();
-        Pokedex(vector<vector<string>> data, int width, int height);
-        void draw(sf::RenderWindow &window, int page);
-        void PositionChange();
-        void setPosition(int width, int height);
-
-
+        Pokedex(); // Default constructor
+        Pokedex(vector<vector<string>> data, int width, int height); // Constructor that takes Pokedex data, width, and height
+        void draw(sf::RenderWindow &window, int page); // Method to draw the Pokedex entries on the window for a specific page
+        void PositionChange(); // Method to change the position of the Pokedex entries when moving through the list
+        void setPosition(int width, int height); // Method to set the position of the Pokedex
 
 };
+
 #endif
