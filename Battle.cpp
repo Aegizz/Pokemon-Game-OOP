@@ -1,18 +1,101 @@
-#include "Battle.h"
+#include <iostream>
+#include <vector>
+#include <string>
+#include "pokemon.h"  // Include pokemon.h before attack.h
+#include "attack.h"
+#include "Player.h"
 
-Battle::Battle(sf::Sprite pokemonSprite) {
-  pokemonSprite_ = pokemonSprite;
-  window.create(sf::VideoMode(windowWidth, windowHeight), "Battle");
-  pokemonSprite_.setPosition((windowWidth / 2) + 200, (windowHeight / 2) - 200);
-  while (window.isOpen()) {
-    sf::Event event;
-    while (window.pollEvent(event)) {
-      if (event.type == sf::Event::Closed) {
-        window.close();
-      }
+extern vector<vector<string>> pokemonDatabase();
+
+// Function to simulate a battle between two Pokémon
+void battle(Pokemon& playerPokemon, Pokemon& opponentPokemon) {
+    std::cout << "A wild " << opponentPokemon.getpokemonName() << " appeared!\n";
+    std::cout << "Go, " << playerPokemon.getpokemonName() << "!\n\n";
+
+    // Game loop
+    while (true) {
+        // Player's turn
+        std::cout << "Your turn:\n";
+        std::vector<Attack> playerAttacks = playerPokemon.getAttacks();
+        std::cout << "Choose an attack:\n";
+        for (int i = 0; i < playerAttacks.size(); ++i) {
+            std::cout << i + 1 << ". " << playerAttacks[i].getAttackName() << "\n";
+        }
+        int attackChoice;
+        std::cin >> attackChoice;
+
+        // Validate the attack choice
+        if (attackChoice < 1 || attackChoice > playerAttacks.size()) {
+            std::cout << "Invalid attack choice. Try again.\n";
+            continue;
+        }
+
+        Attack& selectedAttack = playerAttacks[attackChoice - 1];
+        selectedAttack.useAttack(opponentPokemon);
+        std::cout << playerPokemon.getpokemonName() << " used " << selectedAttack.getAttackName() << "!\n";
+
+        // Check if the opponent's Pokémon fainted
+        if (opponentPokemon.getHealth() <= 0) {
+            std::cout << "You defeated the wild " << opponentPokemon.getpokemonName() << "!\n";
+            break;
+        }
+
+        // Opponent's turn
+        std::cout << "\nOpponent's turn:\n";
+        std::vector<Attack> opponentAttacks = opponentPokemon.getAttacks();
+        srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
+        int opponentAttackChoice = rand() % opponentAttacks.size();
+        Attack& opponentAttack = opponentAttacks[opponentAttackChoice];
+        opponentAttack.useAttack(playerPokemon);
+        std::cout << "The wild " << opponentPokemon.getpokemonName() << " used " << opponentAttack.getAttackName() << "!\n";
+
+        // Check if the player's Pokémon fainted
+        if (playerPokemon.getHealth() <= 0) {
+            std::cout << "Your " << playerPokemon.getpokemonName() << " fainted!\n";
+            break;
+        }
+
+        std::cout << std::endl;
     }
-    window.clear(sf::Color::White);
-    window.draw(pokemonSprite_);
-    window.display();
-  }
+
+    std::cout << "Battle ended.\n";
+}
+
+int main() {
+    vector<vector<string>> database = pokemonDatabase();
+
+    Player player;
+
+    Pokemon bulbasaur("bulbasaur", database);
+    player.addPokemon(bulbasaur);
+
+    Pokemon charmander("charmander", database);
+    player.addPokemon(charmander);
+
+    Pokemon squirtle("squirtle", database);
+    player.addPokemon(squirtle);
+
+    Pokemon pikachu("pikachu", database);
+    player.addPokemon(pikachu);
+
+    Pokemon jigglypuff("jigglypuff", database);
+    player.addPokemon(jigglypuff);
+
+    std::vector<Pokemon> playerTeam = player.getPokemonTeam();
+
+    if (playerTeam.size() < 1) {
+        std::cout << "You don't have any Pokémon in your team.\n";
+        return 0;
+    }
+
+    // Start the battle with the first Pokémon in the player's team
+    Pokemon& playerPokemon = playerTeam[0];
+
+    // Create the opponent's Pokémon
+    Pokemon opponentPokemon("charmander", database);
+
+    // Start the battle
+    battle(playerPokemon, opponentPokemon);
+
+    return 0;
 }
