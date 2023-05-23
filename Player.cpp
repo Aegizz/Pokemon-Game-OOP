@@ -1,42 +1,35 @@
-#include "Player.h"
+#include "pokemon.h"
+#include "player.h"
+#include <vector>
+#include <string>
+#include <iostream>
+extern std::vector<std::vector<std::string>> pokemonDatabase();
+
 
 Player::Player() {
-  player.loadFromFile("playerSprite.png");
-  playerSprite.setTexture(player);
-  playerSprite.setTextureRect(sf::IntRect(0, 0, 85.5, 118));
-  playerSprite.setScale(0.5f, 0.5f);
-  x_ = 0;
-  y_ = 0;
+    // Constructor implementation
 }
 
-// moving player around the map
-void Player::move(double x, double y) {
-  playerSprite.move(static_cast<double>(x * tileSize),
-                    static_cast<double>(y * tileSize));
+bool Player::addPokemon(const Pokemon& pokemon) {
+    if (pokemonTeam.size() < 6) {
+        pokemonTeam.push_back(pokemon);
+        return true;
+    }
+    return false; // Unable to add Pokemon if the team is already full
 }
 
-// animating player when walking horizonatally
-//                                y-axis
-void Player::animationHorizontal(double y) {
-  int animation = 0;
-  animation = (int)playerSprite.getPosition().x / 20 % 4;
-  animation = animation * 85.5;
-  playerSprite.setTextureRect(sf::IntRect(animation, y, 85.5, 118));
+bool Player::removePokemon(const std::string& pokemonName) {
+    for (auto it = pokemonTeam.begin(); it != pokemonTeam.end(); ++it) {
+        if (it->getpokemonName() == pokemonName) {
+            pokemonTeam.erase(it);
+            return true;
+        }
+    }
+    return false; // Unable to find and remove the specified Pokemon
 }
 
-// animating player when moving vertically
-void Player::animationVertical(double y) {
-  int animation = 0;
-  animation = (int)playerSprite.getPosition().y / 20 % 4;
-  animation = animation * 85.5;
-  playerSprite.setTextureRect(sf::IntRect(animation, y, 85.5, 118));
+std::vector<Pokemon> Player::getPokemonTeam() {
+    return pokemonTeam;
 }
 
-// drawing player on the map
-void Player::draw(sf::RenderWindow& window) { window.draw(playerSprite); }
-
-double Player::getX() { return playerSprite.getPosition().x; }
-
-double Player::getY() { return playerSprite.getPosition().y; }
-
-sf::Sprite Player::getPlayerSprite() { return playerSprite; }
+    

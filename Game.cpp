@@ -77,18 +77,18 @@ void Game::checkInteraction() {
   sf::Sprite pokemonSprite1 = pokemons.getSprite1();
   if (playerSprite.getGlobalBounds().intersects(
           pokemonSprite1.getGlobalBounds())) {
-    Battle battle1(pokemonSprite1);
+    BattleSFML battle1(pokemonSprite1);
   }
 
   sf::Sprite pokemonSprite2 = pokemons.getSprite2();
   if (playerSprite.getGlobalBounds().intersects(
           pokemonSprite2.getGlobalBounds())) {
-    Battle battle2(pokemonSprite2);
+    BattleSFML battle2(pokemonSprite2);
   }
 
   sf::Sprite pokemonSprite3 = pokemons.getSprite3();
   if (playerSprite.getGlobalBounds().intersects(
           pokemonSprite3.getGlobalBounds())) {
-    Battle battle3(pokemonSprite3);
+    BattleSFML battle3(pokemonSprite3);
   }
 }

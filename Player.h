@@ -1,27 +1,17 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include <SFML/Graphics.hpp>
-
-#include "Game.h"
-#include "Map.h"
+#include <string>
+#include <vector>
+#include "Pokemon.h"
 
 class Player {
- public:
-  Player();
-  void move(double x, double y);
-  //                        y-axis
-  void animationHorizontal(double y);
-  void animationVertical(double y);
-  void draw(sf::RenderWindow& window);
-  double getX();
-  double getY();
-  sf::Sprite getPlayerSprite();
+private:
+    std::vector<Pokemon> pokemonTeam; // Vector to store the player's Pokemon team
 
- private:
-  int x_;
-  int y_;
-  sf::Texture player;
-  sf::Sprite playerSprite;
+public:
+    Player();
+    bool addPokemon(const Pokemon& pokemon);
+    bool removePokemon(const std::string& pokemonName);
+    std::vector<Pokemon> getPokemonTeam();
 };
-
-#endif
+#endif // PLAYER_H

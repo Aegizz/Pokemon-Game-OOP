@@ -2,9 +2,9 @@
 #define GAME_H
 #include <iostream>
 
-#include "Battle.h"
+#include "BattleSFML.h"
 #include "Map.h"
-#include "Player.h"
+#include "PlayerGraphics.h"
 #include "Pokemons.h"
 
 class Game {
@@ -16,7 +16,7 @@ class Game {
   sf::RenderWindow window;
   sf::RenderWindow battleWindow;
   Map map;
-  Player player;
+  PlayerGraphics player;
   Pokemons pokemons;
   // Battle battle;
 
