@@ -1,10 +1,17 @@
-#include <iostream>
+#include <vector>
+#include <cstdlib> // Include the <cstdlib> header for the rand() function
+#include <ctime>   // Include the <ctime> header for seeding the random number generator
 #include "assignedAttack.h"
+#include "pokemon.h"
+#include "attack.h"
+#include <iostream>
+#include <cstdlib>
 
-extern vector<vector<string>> pokemonDatabase();
+extern std::vector<std::vector<std::string>> pokemonDatabase();
+
 int main() {
-    
-    vector<vector<string>> database = pokemonDatabase();
+    std::vector<std::vector<std::string>> database = pokemonDatabase();
+
 
     assignedAttack pikachu("Pikachu", database);
 
@@ -19,6 +26,16 @@ int main() {
         std::cout << std::endl;
     }
 
+
+    // Get a random attack
+    Attack& randomAttack = pikachu.getRandomAttack();
+
+    // Display the attack details
+    std::cout << "Random Attack:\n";
+    std::cout << "Name: " << randomAttack.getAttackName() << "\n";
+    std::cout << "Power: " << randomAttack.getPower() << "\n";
+    std::cout << "Accuracy: " << randomAttack.getAccuracy() << "\n";
+    std::cout << "PP: " << randomAttack.getRemainingPP() << "\n";
 
     return 0;
 }

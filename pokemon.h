@@ -2,6 +2,7 @@
 #define POKEMON_H
 #include <string>
 #include <vector>
+#include "attack.h"
 using namespace std;
 
 class Pokemon{
@@ -9,6 +10,7 @@ class Pokemon{
         string pokemonName;
         int row;
         int health;
+        int currentHealth;
         vector<vector<string>> data;
         int level;
         string type;
@@ -26,6 +28,9 @@ class Pokemon{
         int getLevel();
         string getType();
         void setType(string _type);
+        void takeDamage(int damage);
+        void setCurrentHealth(int _currentHealth);
+        int getCurrentHealth();
 
 };
 #endif

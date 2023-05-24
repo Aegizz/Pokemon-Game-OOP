@@ -2,7 +2,7 @@
 #define PLAYER_H
 #include <string>
 #include <vector>
-#include "Pokemon.h"
+#include "pokemon.h"
 
 class Player {
 private:
@@ -10,8 +10,9 @@ private:
 
 public:
     Player();
-    bool addPokemon(const Pokemon& pokemon);
-    bool removePokemon(const std::string& pokemonName);
+    bool addPokemon(Pokemon& pokemon);
+    bool removePokemon(std::string pokemonName);
+    bool switchPokemonToFirst(std::string pokemonName);
     std::vector<Pokemon> getPokemonTeam();
 };
 #endif // PLAYER_H

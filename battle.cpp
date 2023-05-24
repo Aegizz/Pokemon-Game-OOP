@@ -1,101 +1,109 @@
+#include "assignedAttack.h"
+#include "player.h"
 #include <iostream>
 #include <vector>
-#include <string>
-#include "pokemon.h"  // Include pokemon.h before attack.h
-#include "attack.h"
-#include "Player.h"
 
-extern vector<vector<string>> pokemonDatabase();
+extern std::vector<std::vector<std::string>> pokemonDatabase();
 
-// Function to simulate a battle between two Pokémon
-void battle(Pokemon& playerPokemon, Pokemon& opponentPokemon) {
-    std::cout << "A wild " << opponentPokemon.getpokemonName() << " appeared!\n";
-    std::cout << "Go, " << playerPokemon.getpokemonName() << "!\n\n";
+// Function to simulate a battle between the player and Pikachu
+void battle(Player& player) {
+    // Create assignedAttack for Pikachu
+    std::vector<std::vector<std::string>> database = pokemonDatabase();
+    assignedAttack pikachu("Pikachu", database);
 
-    // Game loop
+    // Display the battle message
+    std::cout << "A wild Pikachu appeared!\n\n";
+
+    // Get the player's Pokemon team
+    std::vector<Pokemon> team = player.getPokemonTeam();
+
+    // Get the first Pokemon in the team
+    Pokemon& selectedPokemon = team[0];
+
+    // Create assignedAttack for selectedPokemon
+    assignedAttack assigned(selectedPokemon.getpokemonName(), database);
+
+    // Battle loop
     while (true) {
         // Player's turn
-        std::cout << "Your turn:\n";
-        std::vector<Attack> playerAttacks = playerPokemon.getAttacks();
-        std::cout << "Choose an attack:\n";
-        for (int i = 0; i < playerAttacks.size(); ++i) {
-            std::cout << i + 1 << ". " << playerAttacks[i].getAttackName() << "\n";
+        std::cout << "Player's turn:\n";
+        std::cout << "Select an attack:\n";
+
+        // Display the assignedAttack moves
+        std::vector<Attack> moves = assigned.getMoves();
+        for (int i = 0; i < moves.size(); i++) {
+            std::cout << i + 1 << ". " << moves[i].getAttackName() << "\n";
         }
+
+        // Prompt the player to select an attack
         int attackChoice;
+        std::cout << "Enter the option number of the attack you want to use: ";
         std::cin >> attackChoice;
 
-        // Validate the attack choice
-        if (attackChoice < 1 || attackChoice > playerAttacks.size()) {
-            std::cout << "Invalid attack choice. Try again.\n";
+        // Validate the input
+        if (attackChoice < 1 || attackChoice > moves.size()) {
+            std::cout << "Invalid input. Please try again.\n\n";
             continue;
         }
 
-        Attack& selectedAttack = playerAttacks[attackChoice - 1];
-        selectedAttack.useAttack(opponentPokemon);
-        std::cout << playerPokemon.getpokemonName() << " used " << selectedAttack.getAttackName() << "!\n";
+        // Get the selected attack
+        Attack& selectedAttack = moves[attackChoice - 1];
 
-        // Check if the opponent's Pokémon fainted
-        if (opponentPokemon.getHealth() <= 0) {
-            std::cout << "You defeated the wild " << opponentPokemon.getpokemonName() << "!\n";
+        // Perform the attack on Pikachu
+        pikachu.takeDamage(selectedAttack.getPower());
+
+        // Display the attack result
+        std::cout << selectedPokemon.getpokemonName() << " used " << selectedAttack.getAttackName() << "!\n";
+        std::cout << "Pikachu's HP: " << pikachu.getCurrentHealth() << "/" << pikachu.getHealth() << "\n\n";
+
+        // Check if Pikachu is defeated
+        if (pikachu.getHealth() <= 0) {
+            std::cout << "Congratulations! You defeated Pikachu!\n\n";
             break;
         }
 
-        // Opponent's turn
-        std::cout << "\nOpponent's turn:\n";
-        std::vector<Attack> opponentAttacks = opponentPokemon.getAttacks();
-        srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
-        int opponentAttackChoice = rand() % opponentAttacks.size();
-        Attack& opponentAttack = opponentAttacks[opponentAttackChoice];
-        opponentAttack.useAttack(playerPokemon);
-        std::cout << "The wild " << opponentPokemon.getpokemonName() << " used " << opponentAttack.getAttackName() << "!\n";
+        // Pikachu's turn
+        std::cout << "Pikachu's turn:\n";
 
-        // Check if the player's Pokémon fainted
-        if (playerPokemon.getHealth() <= 0) {
-            std::cout << "Your " << playerPokemon.getpokemonName() << " fainted!\n";
+        // Select a random attack from Pikachu's moves
+        Attack& pikachuAttack = pikachu.getRandomAttack();
+
+        // Perform the attack on the player's Pokemon
+        selectedPokemon.takeDamage(pikachuAttack.getPower());
+
+        // Display the attack result
+        std::cout << "Pikachu used " << pikachuAttack.getAttackName() << "!\n";
+        std::cout << selectedPokemon.getpokemonName() << "'s HP: " << selectedPokemon.getCurrentHealth() << "/"
+                  << selectedPokemon.getHealth() << "\n\n";
+
+        // Check if the player's Pokemon is defeated
+        if (selectedPokemon.getHealth() <= 0) {
+            std::cout << selectedPokemon.getpokemonName() << " fainted!\n";
+            player.removePokemon(selectedPokemon.getpokemonName());
             break;
         }
 
-        std::cout << std::endl;
+        // Check if the player has any remaining Pokemon
+        if (player.getPokemonTeam().empty()) {
+            std::cout << "All of your Pokemon fainted. You lost the battle!\n\n";
+            break;
+        }
     }
-
-    std::cout << "Battle ended.\n";
 }
 
 int main() {
-    vector<vector<string>> database = pokemonDatabase();
-
+    // Create a player
     Player player;
 
-    Pokemon bulbasaur("bulbasaur", database);
-    player.addPokemon(bulbasaur);
-
-    Pokemon charmander("charmander", database);
+    // Add some Pokemon to the player's team
+    std::vector<std::vector<std::string>> database = pokemonDatabase();
+    assignedAttack charmander("Charmander", database);
+    assignedAttack squirtle("Squirtle", database);
     player.addPokemon(charmander);
-
-    Pokemon squirtle("squirtle", database);
     player.addPokemon(squirtle);
 
-    Pokemon pikachu("pikachu", database);
-    player.addPokemon(pikachu);
-
-    Pokemon jigglypuff("jigglypuff", database);
-    player.addPokemon(jigglypuff);
-
-    std::vector<Pokemon> playerTeam = player.getPokemonTeam();
-
-    if (playerTeam.size() < 1) {
-        std::cout << "You don't have any Pokémon in your team.\n";
-        return 0;
-    }
-
-    // Start the battle with the first Pokémon in the player's team
-    Pokemon& playerPokemon = playerTeam[0];
-
-    // Create the opponent's Pokémon
-    Pokemon opponentPokemon("charmander", database);
-
     // Start the battle
-    battle(playerPokemon, opponentPokemon);
+    battle(player);
 
     return 0;
 }

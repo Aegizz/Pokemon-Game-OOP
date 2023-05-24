@@ -82,9 +82,25 @@ void Pokemon::setType(string _type) {
     }
 }
 
-
-
 string Pokemon::getType() {
     return findVariableData("Type1");
 }
 
+void Pokemon::takeDamage(int damage) {
+    int currentHealth = stoi(findVariableData("HP"));
+    int newHP = currentHealth - damage;
+    if (newHP < 0) {
+        newHP = 0;
+    }
+    setCurrentHealth(newHP);
+}
+
+
+
+int Pokemon::getCurrentHealth() {
+    return currentHealth;
+}
+
+void Pokemon::setCurrentHealth(int _currentHealth) {
+    currentHealth = _currentHealth;
+}

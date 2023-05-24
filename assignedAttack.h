@@ -5,18 +5,22 @@
 #include "attack.h"
 #include <vector>
 
+using namespace std;
+
 class assignedAttack : public Pokemon {
 private:
-    std::vector<Attack> moveSet;
+    vector<Attack> moveSet;
 
 public:
-    assignedAttack(std::string _name, std::vector<std::vector<std::string>> _database)
+    assignedAttack(string _name, vector<vector<string>> _database)
         : Pokemon(_name, _database) {
         assignMoves();
     }
 
     void assignMoves();
-    std::vector<Attack> getMoves() const;
+    vector<Attack> getMoves() const;
+
+    Attack& getRandomAttack();
 };
 
 #endif // ASSIGNEDATTACK_H

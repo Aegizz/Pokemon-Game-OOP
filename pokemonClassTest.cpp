@@ -16,5 +16,9 @@ int main() {
     std::cout << "Mewtwo Health: " << mewtwo.getHealth() << std::endl;
     std::cout << "Mewtwo Type: " << mewtwo.getType() << std::endl;
 
+    int damage = 3;
+    pikachu.takeDamage(damage);
+    std::cout << "Pikachu Health: " << pikachu.getCurrentHealth() << std::endl;
+
     return 0;
 }
