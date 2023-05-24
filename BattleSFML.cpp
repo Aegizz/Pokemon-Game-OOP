@@ -1,4 +1,4 @@
-#include "Battle.h"
+#include "BattleSFML.h"
 
 BattleSFML::BattleSFML(sf::Sprite pokemonSprite) {
   pokemonSprite_ = pokemonSprite;
