@@ -9,12 +9,48 @@ BattleSFML::BattleSFML(sf::Sprite pokemonSprite) {
   sf::Font font;
   font.loadFromFile("bebas/Bebas-Regular.otf");
 
+  initializePokemonSprites();
+  initializeTexts(font);
+
+  while (window.isOpen()) {
+    handleEvents();
+    render();
+  }
+}
+
+void BattleSFML::initializePokemonSprites() {
   sf::Texture bulbasaurTexture;
   bulbasaurTexture.loadFromFile("pokemonSprites/1.png");
-  sf::Sprite bulbasaurSprite;
   bulbasaurSprite.setTexture(bulbasaurTexture);
   bulbasaurSprite.setScale(2, 2);
   bulbasaurSprite.setPosition(20, 20);
+
+  sf::Texture charmanderTexture;
+  charmanderTexture.loadFromFile("pokemonSprites/4.png");
+  charmanderSprite.setTexture(charmanderTexture);
+  charmanderSprite.setScale(2, 2);
+  charmanderSprite.setPosition(300, 20);
+
+  sf::Texture squirtleTexture;
+  squirtleTexture.loadFromFile("pokemonSprites/7.png");
+  squirtleSprite.setTexture(squirtleTexture);
+  squirtleSprite.setScale(2, 2);
+  squirtleSprite.setPosition(600, 20);
+
+  sf::Texture pikachuTexture;
+  pikachuTexture.loadFromFile("pokemonSprites/25.png");
+  pikachuSprite.setTexture(pikachuTexture);
+  pikachuSprite.setScale(2, 2);
+  pikachuSprite.setPosition(200, 200);
+
+  sf::Texture jigglypuffTexture;
+  jigglypuffTexture.loadFromFile("pokemonSprites/39.png");
+  jigglypuffSprite.setTexture(jigglypuffTexture);
+  jigglypuffSprite.setScale(2, 2);
+  jigglypuffSprite.setPosition(400, 200);
+}
+
+void BattleSFML::initializeTexts(sf::Font& font) {
   sf::Text bulbasaur;
   bulbasaur.setFont(font);
   bulbasaur.setCharacterSize(20);
@@ -22,12 +58,6 @@ BattleSFML::BattleSFML(sf::Sprite pokemonSprite) {
   bulbasaur.setString("1");
   bulbasaur.setPosition(120, 50);
 
-  sf::Texture charmanderTexture;
-  charmanderTexture.loadFromFile("pokemonSprites/4.png");
-  sf::Sprite charmanderSprite;
-  charmanderSprite.setTexture(charmanderTexture);
-  charmanderSprite.setScale(2, 2);
-  charmanderSprite.setPosition(300, 20);
   sf::Text charmander;
   charmander.setFont(font);
   charmander.setCharacterSize(20);
@@ -35,12 +65,6 @@ BattleSFML::BattleSFML(sf::Sprite pokemonSprite) {
   charmander.setString("2");
   charmander.setPosition(400, 50);
 
-  sf::Texture squirtleTexture;
-  squirtleTexture.loadFromFile("pokemonSprites/7.png");
-  sf::Sprite squirtleSprite;
-  squirtleSprite.setTexture(squirtleTexture);
-  squirtleSprite.setScale(2, 2);
-  squirtleSprite.setPosition(600, 20);
   sf::Text squirtle;
   squirtle.setFont(font);
   squirtle.setCharacterSize(20);
@@ -48,12 +72,6 @@ BattleSFML::BattleSFML(sf::Sprite pokemonSprite) {
   squirtle.setString("3");
   squirtle.setPosition(680, 50);
 
-  sf::Texture pikachuTexture;
-  pikachuTexture.loadFromFile("pokemonSprites/25.png");
-  sf::Sprite pikachuSprite;
-  pikachuSprite.setTexture(pikachuTexture);
-  pikachuSprite.setScale(2, 2);
-  pikachuSprite.setPosition(200, 200);
   sf::Text pikachu;
   pikachu.setFont(font);
   pikachu.setCharacterSize(20);
@@ -61,67 +79,47 @@ BattleSFML::BattleSFML(sf::Sprite pokemonSprite) {
   pikachu.setString("4");
   pikachu.setPosition(280, 220);
 
-  sf::Texture jigglypuffTexture;
-  jigglypuffTexture.loadFromFile("pokemonSprites/39.png");
-  sf::Sprite jigglypuffSprite;
-  jigglypuffSprite.setTexture(jigglypuffTexture);
-  jigglypuffSprite.setScale(2, 2);
-  jigglypuffSprite.setPosition(400, 200);
   sf::Text jigglypuff;
   jigglypuff.setFont(font);
   jigglypuff.setCharacterSize(20);
   jigglypuff.setFillColor(sf::Color::Black);
   jigglypuff.setString("5");
   jigglypuff.setPosition(500, 220);
+}
 
-  sf::Text HP;
-  HP.setFont(font);
-  HP.setCharacterSize(20);
-  HP.setFillColor(sf::Color::Black);
-  HP.setString("HP");
-  HP.setPosition((windowWidth / 2) + 250, (windowHeight / 2) - 210);
+void BattleSFML::handleEvents() {
+  sf::Event event;
+  while (window.pollEvent(event)) {
+    if (event.type == sf::Event::Closed) {
+      window.close();
 
-  while (window.isOpen()) {
-    sf::Event event;
-    while (window.pollEvent(event)) {
-      if (event.type == sf::Event::Closed) {
-        window.close();
-      }
-    }
-
-    window.clear(sf::Color::White);
-    // window.draw(HP);
-    // window.draw(pokemonSprite_);
-    window.draw(bulbasaurSprite);
-    window.draw(bulbasaur);
-
-    window.draw(charmanderSprite);
-    window.draw(charmander);
-
-    window.draw(squirtleSprite);
-    window.draw(squirtle);
-
-    window.draw(pikachuSprite);
-    window.draw(pikachu);
-
-    window.draw(jigglypuffSprite);
-    window.draw(jigglypuff);
-    window.display();
-
-    while (window.pollEvent(event)) {
-      switch (event.type) {
-        case sf::Event::KeyReleased:
-
-          switch (event.key.code) {
-            case sf::Keyboard::Num1:
-              bulbasaurSprite.setPosition(200, 200);
-              window.clear(sf::Color::White);
-              window.draw(HP);
-              window.draw(pokemonSprite_);
-              window.draw(bulbasaurSprite);
-              window.display();
-          }
+    } else if (event.type == sf::Event::KeyReleased) {
+      switch (event.key.code) {
+        case sf::Keyboard::Num1:
+          bulbasaurSprite.setPosition(200, 200);
+          window.clear(sf::Color::White);
+          window.draw(pokemonSprite_);
+          window.draw(bulbasaurSprite);
+          window.display();
+          break;
+          // Handle other key events if necessary
       }
     }
   }
+}
+
+void BattleSFML::render() {
+  window.clear(sf::Color::White);
+  window.draw(pokemonSprite_);
+  window.draw(bulbasaurSprite);
+  window.draw(charmanderSprite);
+  window.draw(squirtleSprite);
+  window.draw(pikachuSprite);
+  window.draw(jigglypuffSprite);
+  window.draw(bulbasaur);
+  window.draw(charmander);
+  window.draw(squirtle);
+  window.draw(pikachu);
+  window.draw(jigglypuff);
+  window.display();
 }
