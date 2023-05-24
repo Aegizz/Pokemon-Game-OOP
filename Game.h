@@ -1,5 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
+
+#include <SFML/Graphics.hpp>
 #include <iostream>
 
 #include "BattleSFML.h"
@@ -10,44 +12,24 @@
 class Game {
  public:
   Game();
+  ~Game();  // Destructor to free dynamically allocated memory
   void run();
 
  private:
-  sf::RenderWindow window;
-  sf::RenderWindow battleWindow;
-  Map map;
-  PlayerGraphics player;
-  Pokemons pokemons;
-  // Battle battle;
+  sf::RenderWindow* window;        // Use pointer for dynamic allocation
+  sf::RenderWindow* battleWindow;  // Use pointer for dynamic allocation
+  Map* map;                        // Use pointer for dynamic allocation
+  PlayerGraphics* player;          // Use pointer for dynamic allocation
+  Pokemons* pokemons;              // Use pointer for dynamic allocation
 
-  // game events
+  // Battle* battle;  // Commented out as it's not used
+
+  // Game events
   void handleEvents();
   bool canMove(float x, float y);
-  // adding key presses to move player
   void keyPress(sf::Keyboard::Key key);
-  // render
   void render();
   void checkInteraction();
-
-  // void handleBattleEvents() {
-  //   sf::Event event;
-  //   while (window.pollEvent(event)) {
-  //     if (event.type == sf::Event::Closed) {
-  //       window.close();
-  //     }
-  //   }
-  // }
-  // void renderBattle() {
-  //   battleWindow.clear();
-  //   battle.draw(battleWindow);
-  //   window.display();
-  // }
-  // void battleRun() {
-  //   while (battleWindow.isOpen()) {
-  //     handleBattleEvents();
-  //     renderBattle();
-  //   }
-  // }
 };
 
 #endif
