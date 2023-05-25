@@ -10,10 +10,10 @@ Pokemons::Pokemons() {
 }
 
 sf::Sprite Pokemons::spawnPokemon1() {
-  pokemon1.setTexture(sprites[random1]);
+  pokemon1.setTexture(sprites[24]);
 
-  pokemon1.setPosition(static_cast<float>(random2 * tileSize),
-                       static_cast<float>(random3 * tileSize));
+  pokemon1.setPosition(static_cast<float>(8 * tileSize),
+                       static_cast<float>(5 * tileSize));
 
   return pokemon1;
 }
@@ -42,8 +42,8 @@ void Pokemons::draw(sf::RenderWindow& window) {
   sprite3 = spawnPokemon3();
 
   window.draw(sprite1);
-  window.draw(sprite2);
-  window.draw(sprite3);
+  // window.draw(sprite2);
+  // window.draw(sprite3);
 }
 
 sf::Sprite Pokemons::getSprite1() { return sprite1; }
