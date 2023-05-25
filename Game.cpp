@@ -51,25 +51,27 @@ bool Game::canMove(float x, float y) {
   return true;
 }
 
+// key presses
 void Game::keyPress(sf::Keyboard::Key key) {
+  // player moving up
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) &&
       canMove(player->getX(), player->getY() - tileSize)) {
     player->animationVertical(354);
     player->move(0, -0.1);
   }
-
+  // player moving down
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) &&
       canMove(player->getX(), player->getY() + tileSize)) {
     player->animationVertical(0);
     player->move(0, 0.1);
   }
-
+  // player moving left
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) &&
       canMove(player->getX() - tileSize, player->getY())) {
     player->animationHorizontal(118);
     player->move(-0.1, 0);
   }
-
+  // player moving right
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&
       canMove(player->getX() + tileSize, player->getY())) {
     player->animationHorizontal(236);
@@ -88,7 +90,7 @@ void Game::render() {
 
 void Game::checkInteraction() {
   sf::Sprite playerSprite = player->getPlayerSprite();
-
+  //check if player get close to apokemon
   sf::Sprite pokemonSprite1 = pokemons->getSprite1();
   if (playerSprite.getGlobalBounds().intersects(
           pokemonSprite1.getGlobalBounds())) {

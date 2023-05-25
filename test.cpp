@@ -3,7 +3,7 @@
 
 #include "Game.cpp"
 #include "Map.cpp"
-#include "Player.cpp"
+#include "PlayerGraphics.cpp"
 #include "Pokemons.cpp"
 
 void testMap() {
@@ -27,7 +27,7 @@ void testMap() {
 }
 
 void testPlayer() {
-  Player player;
+  PlayerGraphics player;
 
   // Test getX() and getY()
   assert(player.getX() == 0.0);
