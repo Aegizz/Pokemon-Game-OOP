@@ -8,6 +8,19 @@
 #include "Map.h"
 #include "PlayerGraphics.h"
 #include "Pokemons.h"
+#include "player.h"
+
+
+
+#include <string>
+#include "pokemon.h"  // Include pokemon.h before attack.h
+#include "attack.h"
+#include "assignedAttack.h"
+#include "player.h"
+
+
+
+extern std::vector<std::vector<std::string>> pokemonDatabase();
 
 class Game {
  public:
@@ -21,6 +34,7 @@ class Game {
   Map* map;                        // Use pointer for dynamic allocation
   PlayerGraphics* player;          // Use pointer for dynamic allocation
   Pokemons* pokemons;              // Use pointer for dynamic allocation
+  // Player& player_;
 
   // Battle* battle;  // Commented out as it's not used
 

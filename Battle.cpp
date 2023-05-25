@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "pokemon.h"  // Include pokemon.h before attack.h
-#include "attack.h"
-#include "assignedAttack.h"
-#include "player.h"
+#include "pokemon.cpp"  // Include pokemon.h before attack.h
+#include "attack.cpp"
+#include "assignedAttack.cpp"
+#include "player.cpp"
 #include <iostream>
 #include <vector>
 
@@ -99,19 +99,19 @@ void battle(Player& player) {
 }
 
 
-int main() {
-    // Create a player
-    Player player;
+// int main() {
+//     // Create a player
+//     Player player;
 
-    // Add some Pokemon to the player's team
-    std::vector<std::vector<std::string>> database = pokemonDatabase();
-    assignedAttack charmander("Charmander", database);
-    assignedAttack squirtle("Squirtle", database);
-    player.addPokemon(charmander);
-    player.addPokemon(squirtle);
+//     // Add some Pokemon to the player's team
+//     std::vector<std::vector<std::string>> database = pokemonDatabase();
+//     assignedAttack charmander("Charmander", database);
+//     assignedAttack squirtle("Squirtle", database);
+//     player.addPokemon(charmander);
+//     player.addPokemon(squirtle);
 
-    // Start the battle
-    battle(player);
+//     // Start the battle
+//     battle(player);
 
-    return 0;
-}
+//     return 0;
+// }

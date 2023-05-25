@@ -33,6 +33,7 @@ class Pokemons {
   sf::Sprite pokemon1;
   sf::Sprite pokemon2;
   sf::Sprite pokemon3;
+  std::vector<std::vector<std::string>> pokemonsData;
 };
 
 #endif
