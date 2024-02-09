@@ -1,101 +1,51 @@
 #ifndef GAME_H
 #define GAME_H
+
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include "player.h"
+#include "BattleSFML.h"
 #include "Map.h"
-#include "Player.h"
+#include "PlayerGraphics.h"
 #include "Pokemons.h"
 #include "Menu.h"
+#include "Pokedex.h"
+#include "PokedexPokemon.h"
+
+#include <string>
+#include "Pokemon.h"  // Include pokemon.h before attack.h
+#include "attack.h"
+#include "assignedAttack.h"
+
+
+
+extern std::vector<std::vector<std::string>> pokemonDatabase();
 
 class Game {
  public:
   Game();
+  ~Game();  // Destructor to free dynamically allocated memory
   void run();
 
  private:
-  sf::RenderWindow window;
-  Map map;
-  Player player;
-  Pokemons pokemons;
-  Menu menu = Menu(404,125);
-  bool drawMenu = false;
-  sf::Clock clock;
+  sf::RenderWindow* window;        // Use pointer for dynamic allocation
+  sf::RenderWindow* battleWindow;  // Use pointer for dynamic allocation
+  Map* map;                        // Use pointer for dynamic allocation
+  PlayerGraphics* player;          // Use pointer for dynamic allocation
+  Pokemons* pokemons;              // Use pointer for dynamic allocation
+  Menu * menu;
+  Pokedex * pokedex;
+  PokedexPokemon * pokedexPokemon;
+  // Player& player_;
 
-  // game events
-  void handleEvents() {
-    sf::Event event;
-    while (window.pollEvent(event)) {
-      if (event.type == sf::Event::Closed) {
-        window.close();
-      } else if (event.type == sf::Event::KeyPressed) {  // moving player
-        keyPress(event.key.code);
-      }
+  // Battle* battle;  // Commented out as it's not used
 
-
-    }
-  }
-
-  bool canMove(float x, float y) {
-    int i = static_cast<int>(x) / tileSize;
-    int j = static_cast<int>(y) / tileSize;
-
-    // Check if the coordinates are within the map bounds
-    if (i < 0 || i >= mapWidth || j < 0 || j >= mapHeight) return false;
-
-    return true;
-  }
-
-  // adding key presses to move player
-  void keyPress(sf::Keyboard::Key key) {
-    sf::Event event;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) &&
-        canMove(player.getX(), player.getY() - tileSize)) {
-      player.animationVertical(354);
-      player.move(0, -0.1);
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) &&
-        canMove(player.getX(), player.getY() + tileSize)) {
-      player.animationVertical(0);
-      player.move(0, 0.1);
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) &&
-        canMove(player.getX() - tileSize, player.getY())) {
-      player.animationHorizontal(118);
-      player.move(-0.1, 0);
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&
-        canMove(player.getX() + tileSize, player.getY())) {
-      player.animationHorizontal(236);
-      player.move(0.1, 0);
-    }
-    if (sf::Keyboard::isKeyPressed((sf::Keyboard::W))){
-      menu.moveUp();
-    }
-    if (sf::Keyboard::isKeyPressed((sf::Keyboard::S))){
-      menu.moveDown();
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::M)){
-      if ((int)((clock.getElapsedTime()).asSeconds()) << 1){
-        drawMenu ^= true;
-        clock.restart();
-      }
-    }
-  }
-
-  // render
-  void render() {
-
-    window.clear();
-    map.draw(window);
-    pokemons.draw(window);
-    player.draw(window);
-    if (drawMenu){
-      menu.setPosition(0,325);
-      menu.draw(window);
-    }
-    window.display();
-  }
+  // Game events
+  void handleEvents();
+  bool canMove(float x, float y);
+  void keyPress(sf::Keyboard::Key key);
+  void render();
+  void checkInteraction();
 };
 
 #endif

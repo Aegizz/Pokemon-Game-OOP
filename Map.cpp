@@ -13,12 +13,12 @@ Map::Map() {
                {0, 2, 2, 0, 0, 0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 0}};
 
   // reading sprites
-  grassTexture.loadFromFile("Grass1.png");
-  waterTexture.loadFromFile("water.png");
-  treeTexture.loadFromFile("tree.png");
-  bushTexture.loadFromFile("bush.png");
-  bridgeTexture.loadFromFile("bridge.png");
-  bridgeRotatedTexture.loadFromFile("bridgeRotated.png");
+  grassTexture.loadFromFile("pokemonSprites/Grass1.png");
+  waterTexture.loadFromFile("pokemonSprites/water.png");
+  treeTexture.loadFromFile("pokemonSprites/tree.png");
+  bushTexture.loadFromFile("pokemonSprites/bush.png");
+  bridgeTexture.loadFromFile("pokemonSprites/bridge.png");
+  bridgeRotatedTexture.loadFromFile("pokemonSprites/bridgeRotated.png");
 
   sprite.setSize(sf::Vector2f(tileSize, tileSize));
   sprite.setTexture(&grassTexture);
